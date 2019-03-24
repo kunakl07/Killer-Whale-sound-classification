@@ -1,0 +1,32 @@
+`
+import numpy as np
+import aifc
+import matplotlib.pyplot as plt
+from matplotlib import mlab
+import matplotlib
+import pandas as pd
+%matplotlib inline
+
+
+# Plot spectrogram function
+def plot_spectrogram(filename, whale_flag):
+''' Plots a single spectrogram '''
+    sound = Audiosegment.from(filename)
+    fig = plt.figure(figsize = (10,6))
+    ax1 = fig.add_subplot(111)
+    # Setting spectrogram parameters
+    my_cmap = matplotlib.cm.get_cmap('hsv_r');
+    params = {'NFFT':256, 'Fs':2000, 'noverlap':192, 'cmap' : my_cmap}
+    plt.specgram(sound, **params);
+    title0 = 'Spectrogram - Non-whale sound' if whale_flag == 0 else 'Spectrogram - Whale sound'
+    ax1.set_title(title0, fontsize = 16)
+    ax1.set_xlabel('Time (seconds)', fontsize = 12)
+    ax1.set_ylabel('Frequency (Hz)', fontsize = 12)
+    cbar = plt.colorbar()
+    cbar.set_label('Amplitude', fontsize = 12)
+
+# Plot non-whale sound    
+plot_spectrogram(path_data + 'train/nowhalesample1.wav', 0)
+# Plot whale sound
+plot_spectrogram(path_data + 'train/whalesample.wav', 1)
+`
