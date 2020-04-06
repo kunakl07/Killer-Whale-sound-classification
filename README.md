@@ -1,4 +1,4 @@
-# Orca call detection using CNN and spectrograms
+# Orca call detection 
 
 Here,we are going to identify Killer whale from their sounds.We are going make spectrograms from the sounds of these whales.
 These spectrograms would then be passed to our model where classification of the type of whale would take place.
